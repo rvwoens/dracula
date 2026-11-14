@@ -21,7 +21,7 @@ regelnummers en alle REM-regels zijn bij de reconstructie bedacht. Variabelename
 | `PLAYER` | Complete oplossing als commandoreeks, voor de autoplay-modus. Gebaseerd op `dracula-322/PLAYER`, plus `vampirania` (regel 67); regel 40 is op 14-11 van `k.k.k.k` naar `k.k.k.k.k.k.k.k` gegaan (zie Bekende problemen, Autoplay). |
 | `run` | Start het spel in een pcbasic-venster (via `pcbasic_fix.py`, met `--quit`). |
 | `run-nowindow` | Idem, maar in de terminal zelf, zonder venster (`--interface=cli`). |
-| `README.md` | Voor bezoekers: wat het spel is, homepage, PC-BASIC installeren, spelen (pcbasic, C, DOSBox). Bijwerken als scripts of paden veranderen. |
+| `README.md` / `LEESME.md` | Voor bezoekers, in het Engels / Nederlands (met dezelfde inhoud; ze verwijzen bovenaan naar elkaar): wat het spel is, homepage, PC-BASIC installeren, spelen (pcbasic, C, DOSBox). Beide bijwerken als scripts of paden veranderen. |
 | `dracula.c` | Vertaling van `DRACULA.BAS` naar C (C99 + POSIX), zie "C-versie". `Makefile` bouwt `dracula`; `run-c` bouwt zo nodig en start het in deze map. |
 | `pcbasic_fix.py` | Opstartscript dat twee pcbasic-bugs repareert (de temp-string-lek en het niet-scrollen van de cli-interface, zie Bekende problemen) en daarna pcbasic start met dezelfde argumenten. |
 | `dracula-322/` | Originele uitgave van 2001: `DRACULA.EXE`, `BASRUN.EXE` (1983), `LEESMIJ.TXT`, `LICENSE.TXT` (Artistic-achtige freeware-licentie), `SPEEL.BAT`, lege `DRACULA.BUG`. `DRACULA.TXT` ontbreekt daar; die staat in de hoofdmap. Niet wijzigen. |

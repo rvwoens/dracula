@@ -1,103 +1,106 @@
 # Dracula Avontuur
 
-*(c) 1980–2000 R. van Woensel · "(c) 1982 Incore Automatisering / R.van Woensel produkties" · versie 3.22 · freeware*
+*Nederlandse versie: [LEESME.md](LEESME.md)*
 
-Homepage (uit de uitgave van 2001): <http://www.cosninix.com/dracula>
+*(c) 1980–2000 R. van Woensel · "(c) 1982 Incore Automatisering / R.van Woensel produkties" · version 3.22 · freeware*
 
-Dracula Avontuur is een Nederlandstalig tekstadventure. Het is in 1980 geschreven voor de Commodore PET 2001
-(de voorloper van de VIC-20 en de C64) en was waarschijnlijk het allereerste Nederlandstalige adventurespel. Die eerste versie
-paste in 8 KB, met heel beknopte teksten. Daarna is het spel naar CP/M overgezet en zijn de teksten uitgebreid. De MS-DOS-versie
-is een hercompilatie daarvan met Microsoft BASCOM. In 1985 heeft CYCO Automatisering het spel als nieuwjaarswens gratis verspreid,
-in een oplage van zo'n 200 stuks, en daarna werd het in Nederland enorm populair. In 2001, twintig jaar na het begin, is het als freeware
-opnieuw uitgebracht.
+Homepage (from the 2001 release): <http://www.cosninix.com/dracula>
 
-## Het spel
+Dracula Avontuur ("Dracula Adventure") is a Dutch-language text adventure. It was written in 1980 for the Commodore PET 2001
+(the predecessor of the VIC-20 and the C64) and was probably the very first adventure game in Dutch. That first version
+fit in 8 KB, with very terse texts. The game was then ported to CP/M and the texts were expanded. The MS-DOS version is a
+recompilation of that with Microsoft BASCOM. In 1985 CYCO Automatisering gave the game away as a New Year's gift, about 200 copies,
+and it became hugely popular in the Netherlands. In 2001, twenty years after it started, it was re-released as freeware.
 
-Je begint in je eigen huis, met een briefje. In het dorp staat herberg "de zwarte hand", in de verte ligt het kasteel van
-Lord Dracula. Aan jou de taak om Dracula onschadelijk te maken en levend terug te komen.
+## The game
 
-Je speelt door Nederlandse commando's te typen, een werkwoord met een zelfstandig naamwoord:
+**The game itself is in Dutch:** all texts are Dutch and you type your commands in Dutch.
+
+You start in your own house, with a note. The village has an inn called "de zwarte hand" (the black hand), and in the distance
+stands the castle of Lord Dracula. Your task: put an end to Dracula and get back alive.
+
+You play by typing commands, a verb with a noun:
 
 ```
-->lees brief
-->pak lamp
-->ga deur
-->n                  (ook: z, o, w, h(oog), l(aag), e(ruit))
-->pak alles.o.i      (meerdere commando's achter elkaar, gescheiden door een punt)
+->lees brief         (read note)
+->pak lamp           (take lamp)
+->ga deur            (go door)
+->n                  (also: z, o, w = south, east, west; h(oog) = up, l(aag) = down, e(ruit) = out)
+->pak alles.o.i      (several commands in a row, separated by a full stop)
 ```
 
-Handig: `kijk`, `i` (wat draag je), `help`, `bewaar spel`, `laad spel` (in `DRACULA.SAV`) en `quit`.
+Useful: `kijk` (look), `i` (what you carry), `help`, `bewaar spel` / `laad spel` (save / load game, in `DRACULA.SAV`) and `quit`.
 
-Toetsen op het titelscherm:
+Keys on the title screen:
 
-| Toets | Wat |
+| Key | What |
 |---|---|
-| willekeurige toets | Normaal spel. |
-| `!` | Autoplay: speelt de oplossing uit het bestand `PLAYER` af. Druk na elk commando op een toets; `S` stopt de autoplay. **Spoiler.** |
-| `T` | Testermodus: met het commando `/` schrijf je opmerkingen naar het bestand `TESTER`. |
+| any key | Normal game. |
+| `!` | Autoplay: plays the solution from the file `PLAYER`. Press a key after each command; `S` stops the autoplay. **Spoiler.** |
+| `T` | Tester mode: the command `/` writes comments to the file `TESTER`. |
 
-## Wat zit er in deze map
+## What's in this folder
 
-- **`DRACULA.BAS`**: de broncode in GW-BASIC. Let op: dit is **niet** de originele broncode. Die is verloren gegaan; deze bron
-  is gereconstrueerd uit `DRACULA.EXE`. Variabelenamen, regelnummers en commentaar zijn bij de reconstructie bedacht.
-- **`dracula.c`**: een vertaling van `DRACULA.BAS` naar C, die hetzelfde spel speelt.
-- **`dracula-322/`**: de originele uitgave van 2001 voor MS-DOS (`DRACULA.EXE`, `BASRUN.EXE`, `LEESMIJ.TXT`, `LICENSE.TXT`).
-- **`DRACULA.TXT`**: alle teksten, kamers en voorwerpen. Dit is een **binair** bestand, ondanks de naam: niet openen of opslaan
-  met een teksteditor. Alle versies hebben het nodig.
+- **`DRACULA.BAS`**: the source code in GW-BASIC. Note: this is **not** the original source code. That was lost; this source
+  was reconstructed from `DRACULA.EXE`. Variable names, line numbers and comments were made up during the reconstruction.
+- **`dracula.c`**: a translation of `DRACULA.BAS` into C that plays the same game.
+- **`dracula-322/`**: the original 2001 release for MS-DOS (`DRACULA.EXE`, `BASRUN.EXE`, `LEESMIJ.TXT`, `LICENSE.TXT`).
+- **`DRACULA.TXT`**: all texts, rooms and objects. Despite its name this is a **binary** file: do not open or save it
+  in a text editor. Every version needs it.
 
-## Spelen
+## Playing
 
-### Met PC-BASIC (de BASIC-bron)
+### With PC-BASIC (the BASIC source)
 
-[PC-BASIC](https://pc-basic.org) ([GitHub](https://github.com/robhagemans/pcbasic)) is een gratis emulator van GW-BASIC,
-geschreven in Python. Hij draait op macOS, Linux en Windows.
+[PC-BASIC](https://pc-basic.org) ([GitHub](https://github.com/robhagemans/pcbasic)) is a free GW-BASIC emulator
+written in Python. It runs on macOS, Linux and Windows.
 
-**Installeren** (nodig: Python 3; getest met Python 3.13 en PC-BASIC 2.0.8):
+**Installing** (requires Python 3; tested with Python 3.13 and PC-BASIC 2.0.8):
 
 ```sh
 python3 -m venv ~/.venvs/pcbasic
 ~/.venvs/pcbasic/bin/pip install pcbasic
-~/.venvs/pcbasic/bin/pcbasic --version      # controle: "PC-BASIC 2.0.8"
+~/.venvs/pcbasic/bin/pcbasic --version      # check: "PC-BASIC 2.0.8"
 ```
 
-`pip` installeert ook `pysdl2-dll` (voor het grafische venster) en `pyserial`. De startscripts verwachten PC-BASIC in
-precies deze venv, `~/.venvs/pcbasic`. Wil je hem ergens anders, pas dan het pad in `run` en `run-nowindow` aan.
+`pip` also installs `pysdl2-dll` (for the graphical window) and `pyserial`. The start scripts expect PC-BASIC in exactly
+this venv, `~/.venvs/pcbasic`. If you want it somewhere else, change the path in `run` and `run-nowindow`.
 
-**Starten:**
+**Starting:**
 
 ```sh
-./run              # in een PC-BASIC-venster
-./run-nowindow     # in de terminal zelf, zonder venster
+./run              # in a PC-BASIC window
+./run-nowindow     # in the terminal itself, without a window
 ```
 
-De scripts zijn zsh-scripts (standaard op macOS) en werken vanuit elke map. Ze starten PC-BASIC via `pcbasic_fix.py`, dat eerst
-twee fouten in PC-BASIC 2.0.8 repareert: een geheugenlek dat het spel kan laten crashen, en het niet-scrollen van de
-terminalversie. Start PC-BASIC dus altijd via dat script. Op een systeem zonder zsh:
+The scripts are zsh scripts (the default shell on macOS) and work from any folder. They start PC-BASIC through `pcbasic_fix.py`,
+which first fixes two bugs in PC-BASIC 2.0.8: a memory leak that can make the game crash, and the terminal interface not scrolling.
+So always start PC-BASIC through that script. On a system without zsh:
 
 ```sh
 ~/.venvs/pcbasic/bin/python pcbasic_fix.py --quit DRACULA.BAS
 ```
 
-Bekende beperking onder PC-BASIC: reïncarneren na de dood werkt niet (het programma stopt met "File already open").
-Bewaar dus af en toe je spel, of speel de C-versie.
+Known limitation under PC-BASIC: reincarnation after dying does not work (the program stops with "File already open").
+So save your game now and then, or play the C version.
 
-### C-versie
+### C version
 
-Nodig: een C-compiler (`cc`/`gcc`/`clang`) en `make`; werkt op macOS en Linux.
+Requires a C compiler (`cc`/`gcc`/`clang`) and `make`; works on macOS and Linux.
 
 ```sh
-./run-c            # bouwt zo nodig en start het spel
-# of:
+./run-c            # builds if needed and starts the game
+# or:
 make && ./dracula
 ```
 
-Start het in deze map, want het spel zoekt `DRACULA.TXT` (en `PLAYER` voor de autoplay) in de huidige map.
+Start it in this folder, because the game looks for `DRACULA.TXT` (and `PLAYER` for the autoplay) in the current folder.
 
-### Origineel onder DOSBox
+### The original under DOSBox
 
-De originele `DRACULA.EXE` uit `dracula-322/` draait in principe in [DOSBox](https://www.dosbox.com). Zet `DRACULA.TXT` in dezelfde
-map; de EXE zoekt `BASRUN.EXE` op schijf `A:`, dus mount de map als `A:`. Dit is niet getest.
+The original `DRACULA.EXE` from `dracula-322/` should run in [DOSBox](https://www.dosbox.com). Put `DRACULA.TXT` in the same
+folder; the EXE looks for `BASRUN.EXE` on drive `A:`, so mount the folder as `A:`. This has not been tested.
 
-## Licentie
+## License
 
-Freeware, onder een Artistic-achtige licentie: zie [`dracula-322/LICENSE.TXT`](dracula-322/LICENSE.TXT).
+Freeware, under an Artistic-style license: see [`dracula-322/LICENSE.TXT`](dracula-322/LICENSE.TXT).
