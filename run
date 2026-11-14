@@ -1,0 +1,5 @@
+#!/bin/zsh
+# Dracula in een pcbasic-venster. pcbasic_fix.py repareert de temp-string-lek in pcbasic (zie CLAUDE.md).
+cd "${0:A:h}"
+source ~/.venvs/pcbasic/bin/activate
+python pcbasic_fix.py --quit DRACULA.BAS

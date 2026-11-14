@@ -1,0 +1,5 @@
+#!/bin/zsh
+# Dracula in deze terminal, zonder venster (pcbasic command-line interface).
+cd "${0:A:h}"
+source ~/.venvs/pcbasic/bin/activate
+python pcbasic_fix.py --quit --interface=cli DRACULA.BAS
