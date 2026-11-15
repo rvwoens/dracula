@@ -13,11 +13,8 @@ regelnummers en alle REM-regels zijn bij de reconstructie bedacht. Variabelename
 
 | Bestand | Wat |
 |---|---|
-| `DRACULA.BAS` | Werkversie van de gereconstrueerde bron (GW-BASIC, ASCII, CRLF, 1261 regels). Hier wijzigen. |
-| `DRACULA retrieved.BAS` | Ongewijzigde reconstructie. Verschillen met `DRACULA.BAS`: regel 10240 `PRINT CHR$(7)` vervangen door 10245 `PRINT "** BIEP ** "`, en regel 10850 `WIDTH 255` weggezet als `REM`. Als referentie laten staan. |
-| `LOAD.BAS` | Getokeniseerde (binaire) GW-BASIC-SAVE van `DRACULA.BAS`, inhoudelijk gelijk (alleen getalnotatie `.1` vs `0.1`). Leesbaar maken: `pcbasic --convert=A LOAD.BAS uit.txt`. |
+| `DRACULA.BAS` | Werkversie van de gereconstrueerde bron (GW-BASIC, ASCII, CRLF, 1261 regels). Hier wijzigen. Afwijkend van de reconstructie: regel 10240 `PRINT CHR$(7)` vervangen door 10245 `PRINT "** BIEP ** "`, en regel 10850 `WIDTH 255` weggezet als `REM`. |
 | `DRACULA.TXT` | **Binair** databestand met alle teksten, kamers, uitgangen en objecten (zie onder). Nooit met een teksteditor openen of opslaan. |
-| `DRACULA.SAV` | Bewaard spel (`BEWAAR SPEL`): 69 × int16. De huidige is een beginstand. |
 | `PLAYER` | Complete oplossing als commandoreeks, voor de autoplay-modus. Gebaseerd op `dracula-322/PLAYER`, plus `vampirania` (regel 67); regel 40 is op 14-11 van `k.k.k.k` naar `k.k.k.k.k.k.k.k` gegaan (zie Bekende problemen, Autoplay). |
 | `run` | Start het spel in een pcbasic-venster (via `pcbasic_fix.py`, met `--quit`). |
 | `run-nowindow` | Idem, maar in de terminal zelf, zonder venster (`--interface=cli`). |
@@ -123,6 +120,56 @@ het naamwoord wordt als prefix vergeleken. Zonder `/` = decor (niet te pakken; P
 33 spionageruimte · 34 kruiskamer (spin, vuur) · 35 schatkamer · 36 kerkhof · 37 graftombe · 38 in de doodskist · 39 gegraven gang ·
 40 gang (SLAAPKAMER 1) · 41–44, 51, 52 geheime gangen/nissen · 45–50, 53 doolhof ("...?...") · 54 in het harnas.
 
+## Objecten (1–41)
+
+Uit `DRACULA.TXT` (record `IB + i`); "Start" = beginlocatie (`OL%`), 99 = (nog) niet in het spel. Sleutels zijn de 4-letterwoorden waarmee
+je het object aanspreekt; zonder sleutel = decor of toestand. Meerdere objecten zijn standen van hetzelfde ding (fles 17/18/19/34,
+torenkist 22/23/24, herbergkist 25/26/27, doodskist 38/39, bijl 11/29, touw 2/13, spin 35/41): de code zet dan de ene op 99 en de andere op de plek.
+
+| # | Sleutels | Tekst | Start | Hoe het verandert (regel) |
+|---|---|---|---|---|
+| 1 | LANT BRAN LAMP | kleine brandende lantaren | 1 slaapkamer | BESCHIJN (10120), o.a. Dracula verjagen |
+| 2 | TOUW | stuk dik touw | 3 zolder | KNOOP TOUW in 25 → 13 (5580) |
+| 3 | WIG | houten wig | 18 boomhut | SLA in 24 met hamer 33, Dracula daar → weg (7260), Dracula vergaat |
+| 4 | KNOF STRE | streng knoflook | 12 herberg | KOOP KNOF (7020); pakken zonder betalen telt `HB%` op. GOOI KNOF → `DA%=0` |
+| 5 | BOEK | dik gehavend boek | 99 | PAK BOEK uit kist 26 → bij speler (2440); LEES BOEK |
+| 6 | KAPM MES | zwaar kapmes | 18 boomhut | nodig voor SNIJ (5960) |
+| 7 | LADD | lange ladder | 36 kerkhof | LEG in 0 of 30 → 99 + `LAD0%`/`LAD30%` (3000–3090); PAK daar → terug (2510/2560) |
+| 8 | HOUT | stuk hout | 99 | HAK BOOM met bijl 11 → in de kamer (3190) |
+| 9 | TAK | gesneden tak | 99 | wordt nooit gezet; SNIJ TAK (5970) kan dus niet |
+| 10 | KRUI | houten kruis | 99 | SNIJ HOUT → bij speler (6070); TOON KRUIS in 24 |
+| 11 | BIJL | vlijmsscherpe bijl | 4 kelder | HAK BOOM → weg, speler krijgt 29 (3200) |
+| 12 | | Overbodig voorwerp | 99 | nergens gebruikt |
+| 13 | | stuk dik touw, vastgebonden aan het balkon | 99 | na KNOOP TOUW in 25 |
+| 14 | SCHA KIST | schatkist, vol met gouden munten | 35 schatkamer | winst: ermee in kamer 11 (4520) |
+| 15 | BROO SNEE | sneetje brood | 2 hal | EET → weg (3560) |
+| 16 | MUNT DUIV | gouden duivelaarsmunt | 2 hal | laten vallen in 16 (de bron) → `MUNT%=1`, bronwater blauw (3050); GEEF MUNT in 12 → weg (7900) |
+| 17 | FLES MELK | fles melk (zonder statiegeld) | 2 hal | DRINK MELK → 18 (3450) |
+| 18 | FLES | lege fles | 99 | VUL FLES in 16 → 19, of 34 als `MUNT%=1` (5920–5940) |
+| 19 | FLES WATE | fles water | 99 | DRINK WATER → 18 (3510) |
+| 20 | HALS | gouden halsband | 24 slaapkamer 2 | geen functie in de code |
+| 21 | | zwaar eikenhouten bed | 1 slaapkamer | decor |
+| 22 | | zware gesloten kist | 29 toren | OPEN KIST → 23 (5320) |
+| 23 | | zware geopende kist met een gesloten luik onderin | 99 | OPEN LUIK (als `TRN%=1`) → 24 (5410) |
+| 24 | | zware geopende kist met een geopend luik onderin | 99 | ook via KIJK TORE/GAT in 51 (6560–6600, zet `TRN%=1`) |
+| 25 | | zware kist met een dikke laag stof op de bodem | 14 zolder herberg | BLAAS STOF → 26 (2340) |
+| 26 | | zware kist met een boek onderin | 99 | PAK BOEK → 27 (2420) |
+| 27 | | zware lege kist | 99 | |
+| 28 | | @scherven | 99 | een fles laten vallen → fles weg, scherven in de kamer (2910) |
+| 29 | BIJL | botte bijl | 99 | na HAK BOOM |
+| 30 | SCHE | schep | 6 achter het huis | nodig voor GRAAF; ligt hij bij het vallen van de nacht in een kamer > 20, dan verhuist hij naar woud 7–10 (3730) |
+| 31 | | ondiepe waterbron | 16 heuvel | VUL FLES, munt erin. GRAAF in 36 zet hem op 36 (3300, vreemd) |
+| 32 | DOOS | kleine houten doos | 4 kelder | OPEN DOOS → hamer 33 valt eruit (5510) |
+| 33 | HAME | houten hamer | 99 | uit de doos; nodig voor SLA (wig) |
+| 34 | FLES | fles gevuld met blauw,giftig water | 99 | laten vallen bij de spin → spin dood: 35 weg, 41 erbij (2930–2970). Valt nooit van schrik (10440). Drinken doodt niet (zie Notities) |
+| 35 | | gevaarlijke kruisspin | 34 kruiskamer | zie 34 |
+| 36 | BRIE | klein briefje | 0 eigen huis | LEES BRIEF |
+| 37 | HARN IJZE GROO | groot ijzeren harnas | 21 kasteelhal | GA HARN → kamer 54; GA VUUR in 54 brengt het van 34 naar 35 en terug (2190/2200) |
+| 38 | | zware doodskist met in gothische letters de tekst 'D R A C U L A' | 37 graftombe | OPEN KIST → 39, Dracula wordt wakker (5260) |
+| 39 | KIST DOOD | zware geopende doodskist met op de zijkant de tekst 'DRACULA' | 99 | GA KIST → kamer 38; in 26 → slee naar 11 (2220–2240) |
+| 40 | | ~De vreemd gevormde deur is nu open | 99 | toverwoord in 31 → op 31 (10590) |
+| 41 | SPIN KRUI | dode kruisspin | 99 | zie 34 |
+
 ## Spelverloop (spoiler; exacte commando's in `PLAYER`)
 
 1. Huis/dorp/bos: brief, lamp, knoflook kopen, waard, boek, luisteren in de herberg, bijl/hout/kruis snijden, ladder, toren openen (`TRN%`).
@@ -169,7 +216,7 @@ het naamwoord wordt als prefix vergeleken. Zonder `/` = decor (niet te pakken; P
 
 ## Werkafspraken
 
-- Wijzigingen in `DRACULA.BAS`; `DRACULA retrieved.BAS`, `LOAD.BAS` en `dracula-322/` als referentie laten staan.
+- Wijzigingen in `DRACULA.BAS`; `dracula-322/` als referentie laten staan.
 - Blijf binnen GW-BASIC (pcbasic emuleert GW-BASIC 3.23). Behoud CRLF, ASCII en regelnummering in stappen van 10.
 - `DRACULA.TXT` alleen via een script lezen of wijzigen (struct, 80-byte records), nooit als tekst opslaan. Maak eerst een backup.
 
