@@ -100,6 +100,119 @@ Start het in deze map, want het spel zoekt `DRACULA.TXT` (en `PLAYER` voor de au
 De originele `DRACULA.EXE` uit `dracula-322/` draait in principe in [DOSBox](https://www.dosbox.com). Zet `DRACULA.TXT` in dezelfde
 map; de EXE zoekt `BASRUN.EXE` op schijf `A:`, dus mount de map als `A:`. Dit is niet getest.
 
+## Kamers en voorwerpen
+
+**Spoilers.** Klik op een kop om hem open te klappen.
+
+<details>
+<summary>Kamers (0–54)</summary>
+
+De uitgangen staan er niet bij: sommige doorgangen gaan pas open als je iets gedaan hebt.
+
+| # | Kamer |
+|---|---|
+| 0 | Je eigen huis |
+| 1 | Slaapkamer |
+| 2 | Kleine hal |
+| 3 | Zolder |
+| 4 | Vochtige kelder |
+| 5 | Nauwe zandtunnel |
+| 6 | Achter het huis |
+| 7–10 | Donker woud |
+| 11 | Dorpsstraat |
+| 12 | Herberg "de zwarte hand", met de waard |
+| 13 | Aan tafel in de herberg |
+| 14 | Zolder van de herberg |
+| 15 | Open plek in het bos |
+| 16 | Heuveltop met een bron |
+| 17 | Woud, eikenboom met een hut |
+| 18 | Boomhut |
+| 19 | Pad naar het kasteel |
+| 20 | Kasteelingang |
+| 21 | Kasteelhal (harnas) |
+| 22 | Lange gang, deur "SLAAPKAMER 2" |
+| 23 | Slaapkamer 1 |
+| 24 | Slaapkamer 2 |
+| 25 | Balkon |
+| 26 | Smalle rand langs het kasteel |
+| 27 | Eetkamer |
+| 28 | Torendak |
+| 29 | Kasteeltoren |
+| 30 | Wenteltrap |
+| 31 | Wenteltrap, deur "DIT IS SESAM" |
+| 32 | Gewelf met een ijzeren hek |
+| 33 | Spionageruimte |
+| 34 | Kruiskamer (spin, vuur) |
+| 35 | Schatkamer |
+| 36 | Binnenplaats met kerkhof |
+| 37 | Graftombe |
+| 38 | In een doodskist |
+| 39 | Gegraven gang |
+| 40 | Lange gang, deur "SLAAPKAMER 1" |
+| 41 | Smalle nis met een kijkgat |
+| 42 | Einde van een nauwe, hoge gang |
+| 43 | Gat in de grond |
+| 44 | Onbegaanbare gang |
+| 45–50, 53 | Doolhof ("...?...") |
+| 51 | Nis met een bordje "TORENKAMER" |
+| 52 | Ventilatieruimte |
+| 54 | In het harnas |
+
+</details>
+
+<details>
+<summary>Voorwerpen (1–41)</summary>
+
+"Woorden" zijn de zelfstandige naamwoorden waarmee je een voorwerp aanspreekt (`pak lamp`, `pak lant`); alleen de eerste 4 letters tellen.
+Een voorwerp zonder woorden kun je niet pakken: het is decor, of een stand van iets anders. Een aantal voorwerpen zijn standen van
+hetzelfde ding: de fles (17, 18, 19, 34), de kisten (22–24 en 25–27), de doodskist (38, 39), de bijl (11, 29), het touw (2, 13) en de spin (35, 41).
+
+| # | Woorden | Voorwerp | Waar / wanneer |
+|---|---|---|---|
+| 1 | LANT BRAN LAMP | kleine brandende lantaren | 1 slaapkamer |
+| 2 | TOUW | stuk dik touw | 3 zolder |
+| 3 | WIG | houten wig | 18 boomhut |
+| 4 | KNOF STRE | streng knoflook | 12 herberg (te koop) |
+| 5 | BOEK | dik gehavend boek | verstopt in de stoffige kist op 14 |
+| 6 | KAPM MES | zwaar kapmes | 18 boomhut |
+| 7 | LADD | lange ladder | 36 kerkhof |
+| 8 | HOUT | stuk hout | door een boom om te hakken |
+| 9 | TAK | gesneden tak | komt nooit in het spel |
+| 10 | KRUI | houten kruis | gesneden uit het hout |
+| 11 | BIJL | vlijmsscherpe bijl | 4 kelder |
+| 12 | | Overbodig voorwerp | wordt niet gebruikt |
+| 13 | | stuk dik touw, vastgebonden aan het balkon | als je het touw vastknoopt op 25 |
+| 14 | SCHA KIST | schatkist, vol met gouden munten | 35 schatkamer |
+| 15 | BROO SNEE | sneetje brood | 2 hal |
+| 16 | MUNT DUIV | gouden duivelaarsmunt | 2 hal |
+| 17 | FLES MELK | fles melk (zonder statiegeld) | 2 hal |
+| 18 | FLES | lege fles | de fles na het drinken |
+| 19 | FLES WATE | fles water | gevuld bij de bron |
+| 20 | HALS | gouden halsband | 24 slaapkamer 2 |
+| 21 | | zwaar eikenhouten bed | 1 slaapkamer |
+| 22 | | zware gesloten kist | 29 kasteeltoren |
+| 23 | | zware geopende kist met een gesloten luik onderin | na het openen van 22 |
+| 24 | | zware geopende kist met een geopend luik onderin | na het openen van het luik |
+| 25 | | zware kist met een dikke laag stof op de bodem | 14 zolder van de herberg |
+| 26 | | zware kist met een boek onderin | na het wegblazen van het stof |
+| 27 | | zware lege kist | na het pakken van het boek |
+| 28 | | scherven | als er een fles kapotvalt |
+| 29 | BIJL | botte bijl | de bijl na het hakken |
+| 30 | SCHE | schep | 6 achter het huis |
+| 31 | | ondiepe waterbron | 16 heuveltop |
+| 32 | DOOS | kleine houten doos | 4 kelder |
+| 33 | HAME | houten hamer | in de doos |
+| 34 | FLES | fles gevuld met blauw,giftig water | gevuld bij de bron, nadat die vergiftigd is |
+| 35 | | gevaarlijke kruisspin | 34 kruiskamer |
+| 36 | BRIE | klein briefje | 0 je eigen huis |
+| 37 | HARN IJZE GROO | groot ijzeren harnas | 21 kasteelhal |
+| 38 | | zware doodskist met in gothische letters de tekst 'D R A C U L A' | 37 graftombe |
+| 39 | KIST DOOD | zware geopende doodskist met op de zijkant de tekst 'DRACULA' | na het openen van de doodskist |
+| 40 | | De vreemd gevormde deur is nu open | na het toverwoord |
+| 41 | SPIN KRUI | dode kruisspin | na het gif |
+
+</details>
+
 ## Licentie
 
 Freeware, onder een Artistic-achtige licentie: zie [`dracula-322/LICENSE.TXT`](dracula-322/LICENSE.TXT).

@@ -18,7 +18,7 @@ regelnummers en alle REM-regels zijn bij de reconstructie bedacht. Variabelename
 | `PLAYER` | Complete oplossing als commandoreeks, voor de autoplay-modus. Gebaseerd op `dracula-322/PLAYER`, plus `vampirania` (regel 67); regel 40 is op 14-11 van `k.k.k.k` naar `k.k.k.k.k.k.k.k` gegaan (zie Bekende problemen, Autoplay). |
 | `run` | Start het spel in een pcbasic-venster (via `pcbasic_fix.py`, met `--quit`). |
 | `run-nowindow` | Idem, maar in de terminal zelf, zonder venster (`--interface=cli`). |
-| `README.md` / `LEESME.md` | Voor bezoekers, in het Engels / Nederlands (met dezelfde inhoud; ze verwijzen bovenaan naar elkaar): wat het spel is, homepage, PC-BASIC installeren, spelen (pcbasic, C, DOSBox). Beide bijwerken als scripts of paden veranderen. |
+| `README.md` / `LEESME.md` | Voor bezoekers, in het Engels / Nederlands (met dezelfde inhoud; ze verwijzen bovenaan naar elkaar): wat het spel is, homepage, PC-BASIC installeren, spelen (pcbasic, C, DOSBox), en inklapbare spoilertabellen van kamers en voorwerpen. Beide bijwerken als scripts, paden, kamers of objecten veranderen. |
 | `dracula.c` | Vertaling van `DRACULA.BAS` naar C (C99 + POSIX), zie "C-versie". `Makefile` bouwt `dracula`; `run-c` bouwt zo nodig en start het in deze map. |
 | `pcbasic_fix.py` | Opstartscript dat twee pcbasic-bugs repareert (de temp-string-lek en het niet-scrollen van de cli-interface, zie Bekende problemen) en daarna pcbasic start met dezelfde argumenten. |
 | `dracula-322/` | Originele uitgave van 2001: `DRACULA.EXE`, `BASRUN.EXE` (1983), `LEESMIJ.TXT`, `LICENSE.TXT` (Artistic-achtige freeware-licentie), `SPEEL.BAT`, lege `DRACULA.BUG`. `DRACULA.TXT` ontbreekt daar; die staat in de hoofdmap. Niet wijzigen. |
@@ -114,7 +114,7 @@ het naamwoord wordt als prefix vergeleken. Zonder `/` = decor (niet te pakken; P
 ## Wereld (kamers 0–54)
 
 0 eigen huis · 1 slaapkamer · 2 hal · 3 zolder · 4 kelder · 5 zandtunnel · 6 achter het huis · 7–10 woud · 11 dorpsstraat ·
-12 herberg "de zwarte hand" (waard) · 13 aan tafel · 14 zolder herberg · 15 open plek bij bron · 16 heuvel · 17 boom met hut · 18 boomhut ·
+12 herberg "de zwarte hand" (waard) · 13 aan tafel · 14 zolder herberg · 15 open plek (bron in het oosten) · 16 heuveltop met bron (`VUL FLES`, munt) · 17 boom met hut · 18 boomhut ·
 19 pad · 20 kasteelingang · 21 kasteelhal (harnas) · 22 gang (SLAAPKAMER 2) · 23 slaapkamer 1 · 24 slaapkamer 2 (Dracula) · 25 balkon ·
 26 smalle rand · 27 eetkamer · 28 torendak · 29 toren · 30–31 wenteltrap (31: deur "DIT IS SESAM") · 32 gewelf met ijzeren hek ·
 33 spionageruimte · 34 kruiskamer (spin, vuur) · 35 schatkamer · 36 kerkhof · 37 graftombe · 38 in de doodskist · 39 gegraven gang ·
